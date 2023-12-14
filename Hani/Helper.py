@@ -1,6 +1,10 @@
 import pandas
 
-duplicated = lambda data, i : data.shape[0] != data[i].nunique()
+def duplicated(table, i):
+    if table.shape[0] == table[i].nunique():
+        return "All Good !"
+    result = table[table.duplicated(subset=i)]
+    return result
 
 def nullities(table):
     null_i = table.isnull().sum()
